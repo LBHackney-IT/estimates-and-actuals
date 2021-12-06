@@ -1,11 +1,11 @@
 version: "3.2"
 
 services:
-  base-api:
-    image: base-api
+  estimates-and-actuals:
+    image: estimates-and-actuals
     build:
      context: .
-     dockerfile: BaseApi/Dockerfile
+     dockerfile: Estimates_And_Actuals/Dockerfile
      args:
      - LBHPACKAGESTOKEN=${LBHPACKAGESTOKEN}
     ports:
@@ -27,11 +27,11 @@ services:
     volumes:
       - ./database:/docker-entrypoint-initdb.d
 
-  base-api-test:
-    image: base-api-test
+  estimates-and-actuals-test:
+    image: estimates-and-actuals-test
     build:
       context: .
-      dockerfile: BaseApi.Tests/Dockerfile
+      dockerfile: Estimates_And_Actuals.Tests/Dockerfile
       args:
       - LBHPACKAGESTOKEN=${LBHPACKAGESTOKEN}
     environment:
