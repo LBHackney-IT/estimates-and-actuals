@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using EstimatesAndActuals.V1.Boundary.Response;
 using EstimatesAndActuals.V1.Factories;
 using EstimatesAndActuals.V1.Gateways;
@@ -6,19 +8,20 @@ using Hackney.Core.Logging;
 
 namespace EstimatesAndActuals.V1.UseCase
 {
-    //TODO: Rename class name and interface name to reflect the entity they are representing eg. GetClaimantByIdUseCase
+
     public class GetByIdUseCase : IGetByIdUseCase
     {
-        private IExampleGateway _gateway;
-        public GetByIdUseCase(IExampleGateway gateway)
+        private readonly IDynamoDbGateway _gateway;
+        public GetByIdUseCase(IDynamoDbGateway gateway)
         {
             _gateway = gateway;
         }
+
         [LogCall]
-        //TODO: rename id to the name of the identifier that will be used for this API, the type may also need to change
-        public ResponseObject Execute(int id)
+        public async Task<EstimatesAndActualsResponse> ExecuteAsync(Guid id)
         {
-            return _gateway.GetEntityById(id).ToResponse();
+            var data = await _gateway.GetByIdAsync(id).ConfigureAwait(false);
+            return data?.ToResponse();
         }
     }
 }

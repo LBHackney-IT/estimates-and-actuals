@@ -13,14 +13,14 @@ namespace EstimatesAndActuals.Tests.V1.UseCase
 {
     public class GetAllUseCaseTests : LogCallAspectFixture
     {
-        private Mock<IExampleGateway> _mockGateway;
+        private Mock<IDynamoDbGateway> _mockGateway;
         private GetAllUseCase _classUnderTest;
         private Fixture _fixture;
 
         [SetUp]
         public void SetUp()
         {
-            _mockGateway = new Mock<IExampleGateway>();
+            _mockGateway = new Mock<IDynamoDbGateway>();
             _classUnderTest = new GetAllUseCase(_mockGateway.Object);
             _fixture = new Fixture();
         }
@@ -31,7 +31,7 @@ namespace EstimatesAndActuals.Tests.V1.UseCase
             var stubbedEntities = _fixture.CreateMany<EstimateAndActuals>().ToList();
             _mockGateway.Setup(x => x.GetAll()).Returns(stubbedEntities);
 
-            var expectedResponse = new ResponseObjectList { ResponseObjects = stubbedEntities.ToResponse() };
+            var expectedResponse = new ResponseObjectList { EstimatesAndActualsResponses = stubbedEntities.ToResponse() };
 
             _classUnderTest.Execute().Should().BeEquivalentTo(expectedResponse);
         }

@@ -1,3 +1,4 @@
+using System;
 using Amazon.DynamoDBv2.DataModel;
 using EstimatesAndActuals.V1.Domain;
 using EstimatesAndActuals.V1.Factories;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EstimatesAndActuals.V1.Gateways
 {
-    public class DynamoDbGateway : IExampleDynamoGateway
+    public class DynamoDbGateway : IDynamoDbGateway
     {
         private readonly IDynamoDBContext _dynamoDbContext;
         private readonly ILogger<DynamoDbGateway> _logger;
@@ -21,18 +22,31 @@ namespace EstimatesAndActuals.V1.Gateways
             _logger = logger;
         }
 
-        public List<EstimateAndActuals> GetAll()
-        {
-            return new List<EstimateAndActuals>();
-        }
-
-        [LogCall]
-        public async Task<EstimateAndActuals> GetEntityById(int id)
+        public async Task<EstimateAndActuals> GetByIdAsync(Guid id)
         {
             _logger.LogDebug($"Calling IDynamoDBContext.LoadAsync for id parameter {id}");
 
-            var result = await _dynamoDbContext.LoadAsync<DatabaseEntity>(id).ConfigureAwait(false);
+            var result = await _dynamoDbContext.LoadAsync<EstimateAndActualsDbEntity>(id).ConfigureAwait(false);
             return result?.ToDomain();
+        }
+
+        public Task<List<EstimateAndActuals>> GetAllAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public async Task AddAsync(EstimateAndActuals dbEntity)
+        {
+            _logger.LogDebug($"Calling IDynamoDBContext.SaveAsync for Adding {dbEntity}");
+
+            await _dynamoDbContext.SaveAsync<EstimateAndActualsDbEntity>(dbEntity.ToDatabase()).ConfigureAwait(false);
+        }
+
+        public async Task EditAsync(EstimateAndActuals dbEntity)
+        {
+            _logger.LogDebug($"Calling IDynamoDBContext.SaveAsync for Updating {dbEntity}");
+
+            await _dynamoDbContext.SaveAsync<EstimateAndActualsDbEntity>(dbEntity.ToDatabase()).ConfigureAwait(false);
         }
     }
 }

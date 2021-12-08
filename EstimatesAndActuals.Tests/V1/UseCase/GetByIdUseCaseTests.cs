@@ -7,13 +7,13 @@ namespace EstimatesAndActuals.Tests.V1.UseCase
 {
     public class GetByIdUseCaseTests : LogCallAspectFixture
     {
-        private Mock<IExampleGateway> _mockGateway;
+        private Mock<IDynamoDbGateway> _mockGateway;
         private GetByIdUseCase _classUnderTest;
 
         [SetUp]
         public void SetUp()
         {
-            _mockGateway = new Mock<IExampleGateway>();
+            _mockGateway = new Mock<IDynamoDbGateway>();
             _classUnderTest = new GetByIdUseCase(_mockGateway.Object);
         }
 

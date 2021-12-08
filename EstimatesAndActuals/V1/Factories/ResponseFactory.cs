@@ -7,14 +7,34 @@ namespace EstimatesAndActuals.V1.Factories
 {
     public static class ResponseFactory
     {
-        //TODO: Map the fields in the domain object(s) to fields in the response object(s).
-        // More information on this can be found here https://github.com/LBHackney-IT/lbh-estimates-and-actuals/wiki/Factory-object-mappings
-        public static ResponseObject ToResponse(this EstimateAndActuals domain)
+        public static EstimatesAndActualsResponse ToResponse(this EstimateAndActuals domain)
         {
-            return new ResponseObject();
+            return new EstimatesAndActualsResponse
+            {
+                Id = domain.Id,
+                ChargeName = domain.ChargeName,
+                ChargesListId = domain.ChargesListId,
+                CreatedAt = domain.CreatedAt,
+                CreatedBy = domain.CreatedBy,
+                EstimateYear = domain.EstimateYear,
+                EstimatedTotal = domain.EstimatedTotal,
+                FianceApproverName = domain.FianceApproverName,
+                FinanceApprovedAt = domain.FinanceApprovedAt,
+                HeadApprovedAt = domain.HeadApprovedAt,
+                HeadApproverName = domain.HeadApproverName,
+                IsApportioned = domain.IsApportioned,
+                IsFinanceApproved = domain.IsFinanceApproved,
+                IsHeadApproved = domain.IsHeadApproved,
+                IsManagerApproved = domain.IsManagerApproved,
+                LastUpdatedAt = domain.LastUpdatedAt,
+                LastUpdatedBy = domain.LastUpdatedBy,
+                ManagerApprovedAt = domain.ManagerApprovedAt,
+                ManagerApproverName = domain.ManagerApproverName,
+                Notes = domain.Notes
+            };
         }
 
-        public static List<ResponseObject> ToResponse(this IEnumerable<EstimateAndActuals> domainList)
+        public static List<EstimatesAndActualsResponse> ToResponse(this IEnumerable<EstimateAndActuals> domainList)
         {
             return domainList.Select(domain => domain.ToResponse()).ToList();
         }

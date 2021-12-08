@@ -11,6 +11,6 @@ namespace EstimatesAndActuals.V1.Infrastructure
         {
         }
 
-        public DbSet<DatabaseEntity> DatabaseEntities { get; set; }
+        public DbSet<EstimateAndActualsDbEntity> DatabaseEntities { get; set; }
     }
 }

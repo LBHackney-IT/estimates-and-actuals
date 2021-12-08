@@ -9,15 +9,15 @@ namespace EstimatesAndActuals.V1.UseCase
     //TODO: Rename class name and interface name to reflect the entity they are representing eg. GetAllClaimantsUseCase
     public class GetAllUseCase : IGetAllUseCase
     {
-        private readonly IExampleGateway _gateway;
-        public GetAllUseCase(IExampleGateway gateway)
+        private readonly IDynamoDbGateway _gateway;
+        public GetAllUseCase(IDynamoDbGateway gateway)
         {
             _gateway = gateway;
         }
         [LogCall]
         public ResponseObjectList Execute()
         {
-            return new ResponseObjectList { ResponseObjects = _gateway.GetAll().ToResponse() };
+            return new ResponseObjectList { EstimatesAndActualsResponses = _gateway.GetAll().ToResponse() };
         }
     }
 }

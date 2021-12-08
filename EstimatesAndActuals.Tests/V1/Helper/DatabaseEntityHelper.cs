@@ -6,16 +6,16 @@ namespace EstimatesAndActuals.Tests.V1.Helper
 {
     public static class DatabaseEntityHelper
     {
-        public static DatabaseEntity CreateDatabaseEntity()
+        public static EstimateAndActualsDbEntity CreateDatabaseEntity()
         {
             var entity = new Fixture().Create<EstimateAndActuals>();
 
             return CreateDatabaseEntityFrom(entity);
         }
 
-        public static DatabaseEntity CreateDatabaseEntityFrom(EstimateAndActuals estimateAndActuals)
+        public static EstimateAndActualsDbEntity CreateDatabaseEntityFrom(EstimateAndActuals estimateAndActuals)
         {
-            return new DatabaseEntity
+            return new EstimateAndActualsDbEntity
             {
                 Id = estimateAndActuals.Id,
                 CreatedAt = estimateAndActuals.CreatedAt,

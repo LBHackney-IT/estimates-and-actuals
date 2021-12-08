@@ -41,7 +41,7 @@ using System.Threading.Tasks;
 //    private async Task SetupTestData(EstimateAndActuals entity)
 //    {
 //        await DynamoDbContext.SaveAsync(entity.ToDatabase()).ConfigureAwait(false);
-//        CleanupActions.Add(async () => await DynamoDbContext.DeleteAsync<DatabaseEntity>(entity.Id).ConfigureAwait(false));
+//        CleanupActions.Add(async () => await DynamoDbContext.DeleteAsync<EstimateAndActualsDbEntity>(entity.Id).ConfigureAwait(false));
 //    }
 
 //    [Test]

@@ -63,7 +63,7 @@ namespace EstimatesAndActuals
 
             services.AddSingleton<IApiVersionDescriptionProvider, DefaultApiVersionDescriptionProvider>();
 
-            services.AddDynamoDbHealthCheck<DatabaseEntity>();
+            services.AddDynamoDbHealthCheck<EstimateAndActualsDbEntity>();
 
             services.AddSwaggerGen(c =>
             {
@@ -146,7 +146,7 @@ namespace EstimatesAndActuals
 
         private static void RegisterGateways(IServiceCollection services)
         {
-            services.AddScoped<IExampleGateway, ExampleGateway>();
+            services.AddScoped<IDynamoDbGateway, EstimatesAndActualGateway>();
 
             //TODO: For DynamoDb, remove the line above and uncomment the line below.
             //services.AddScoped<IExampleDynamoGateway, DynamoDbGateway>();

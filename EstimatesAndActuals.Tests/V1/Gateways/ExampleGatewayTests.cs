@@ -14,18 +14,18 @@ namespace EstimatesAndActuals.Tests.V1.Gateways
     public class ExampleGatewayTests : DatabaseTests
     {
         private readonly Fixture _fixture = new Fixture();
-        private ExampleGateway _classUnderTest;
+        private EstimatesAndActualGateway _classUnderTest;
 
         [SetUp]
         public void Setup()
         {
-            _classUnderTest = new ExampleGateway(DatabaseContext);
+            _classUnderTest = new EstimatesAndActualGateway(DatabaseContext);
         }
 
         [Test]
         public void GetEntityByIdReturnsNullIfEntityDoesntExist()
         {
-            var response = _classUnderTest.GetEntityById(123);
+            var response = _classUnderTest.GetById(123);
 
             response.Should().BeNull();
         }
@@ -39,7 +39,7 @@ namespace EstimatesAndActuals.Tests.V1.Gateways
             DatabaseContext.DatabaseEntities.Add(databaseEntity);
             DatabaseContext.SaveChanges();
 
-            var response = _classUnderTest.GetEntityById(databaseEntity.Id);
+            var response = _classUnderTest.GetById(databaseEntity.Id);
 
             databaseEntity.Id.Should().Be(response.Id);
             databaseEntity.CreatedAt.Should().BeSameDateAs(response.CreatedAt);
