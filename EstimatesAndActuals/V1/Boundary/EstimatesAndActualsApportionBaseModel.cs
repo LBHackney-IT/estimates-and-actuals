@@ -4,19 +4,10 @@ using EstimatesAndActuals.V1.Domain;
 namespace EstimatesAndActuals.V1.Boundary
 {
 
-    public abstract class EstimatesAndActualsBaseModel
+    public abstract class EstimatesAndActualsApportionBaseModel
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <example>
-        ///     afc58c24-dbb4-4c11-a652-f5fd90e6b21e
-        /// </example>
-        public Guid ChargesListId { get; set; }
-        public string ChargeName { get; set; }
-        public decimal EstimatedTotal { get; set; }
-        public bool IsApportioned { get; set; }
         public Notes Notes { get; set; }
+        public bool IsApportioned { get; set; }
         public bool IsManagerApproved { get; set; }
         public string ManagerApproverName { get; set; }
         public DateTime ManagerApprovedAt { get; set; }
@@ -26,6 +17,6 @@ namespace EstimatesAndActuals.V1.Boundary
         public bool IsHeadApproved { get; set; }
         public string HeadApproverName { get; set; }
         public DateTime HeadApprovedAt { get; set; }
-        public int EstimateYear { get; set; }
+        public decimal EstimatedTotal { get; set; }
     }
 }

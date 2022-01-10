@@ -13,12 +13,13 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/v1/healthcheck/ping",
-      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "DynamoDb_LocalServiceUrl": "http://localhost:8000",
         "DynamoDb_LocalMode": "true",
-        "DynamoDb_LocalServiceUrl": "http://localhost:8000"
-      }
+        "REQUIRED_GOOGL_GROUPS": "e2e-testing-development;HackneyAll;saml-mtfh-developer"
+      },
+      "applicationUrl": "http://localhost:5000"
     }
   }
 }

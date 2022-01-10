@@ -1,6 +1,6 @@
 namespace EstimatesAndActuals.V1.Boundary.Request
 {
-    public class EstimatesAndActualsUpdateRequest : EstimatesAndActualsBaseModel
+    public class EstimatesAndActualsUpdateRequest : EstimatesAndActualsApportionBaseModel
     {
     }
 }

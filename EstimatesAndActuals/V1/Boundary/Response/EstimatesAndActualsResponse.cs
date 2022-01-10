@@ -4,7 +4,7 @@ using EstimatesAndActuals.V1.Boundary.Interface;
 namespace EstimatesAndActuals.V1.Boundary.Response
 {
 
-    public class EstimatesAndActualsResponse : EstimatesAndActualsBaseModel, IEstimateAndActualsModelWithId
+    public class EstimatesAndActualsResponse : EstimatesAndActualsApportionBaseModel, IEstimateAndActualsModelWithId
     {
         /// <summary>
         /// 
