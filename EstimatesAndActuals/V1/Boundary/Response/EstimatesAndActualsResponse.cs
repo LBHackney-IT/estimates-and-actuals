@@ -1,11 +1,10 @@
 using System;
 using EstimatesAndActuals.V1.Boundary.Interface;
-using EstimatesAndActuals.V1.Domain;
 
 namespace EstimatesAndActuals.V1.Boundary.Response
 {
 
-    public class EstimatesAndActualsResponse:EstimatesAndActualsBaseModel,IEstimateAndActualsModelWithId
+    public class EstimatesAndActualsResponse : EstimatesAndActualsBaseModel, IEstimateAndActualsModelWithId
     {
         /// <summary>
         /// 

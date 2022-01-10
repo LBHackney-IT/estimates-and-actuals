@@ -3,7 +3,6 @@ using Amazon.DynamoDBv2.DataModel;
 using EstimatesAndActuals.V1.Domain;
 using EstimatesAndActuals.V1.Factories;
 using EstimatesAndActuals.V1.Infrastructure;
-using Hackney.Core.Logging;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;

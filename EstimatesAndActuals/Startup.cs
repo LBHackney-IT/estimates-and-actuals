@@ -146,7 +146,7 @@ namespace EstimatesAndActuals
 
         private static void RegisterGateways(IServiceCollection services)
         {
-            services.AddScoped<IDynamoDbGateway, EstimatesAndActualGateway>();
+            services.AddScoped<IDynamoDbGateway, DynamoDbGateway>();
 
             //TODO: For DynamoDb, remove the line above and uncomment the line below.
             //services.AddScoped<IExampleDynamoGateway, DynamoDbGateway>();
